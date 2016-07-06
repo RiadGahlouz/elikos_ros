@@ -40,7 +40,13 @@ add_executable( elikos_detection
     src/detection/BlobDetection/RobotDetection.cpp
     src/detection/BlobDetection/RobotDetection.h
     src/detection/BlobDetection/BlobTracking.h
-    src/detection/BlobDetection/BlobTracking.cpp)
+    src/detection/BlobDetection/BlobTracking.cpp
+    src/detection/CVWrapper/AbstractCVWrapper.cpp
+    src/detection/CVWrapper/AbstractCVWrapper.h
+    src/detection/CVWrapper/CpuCV.cpp
+    src/detection/CVWrapper/CpuCV.h
+    src/detection/CVWrapper/GpuCV.cpp
+    src/detection/CVWrapper/GpuCV.h)
 
 target_link_libraries(elikos_detection
   ${catkin_LIBRARIES}
