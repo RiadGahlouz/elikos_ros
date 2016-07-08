@@ -2,8 +2,8 @@
 // Created by olivier on 06/07/16.
 //
 
-#ifndef ELIKOS_DETECTION_CPUWRAPPER_H
-#define ELIKOS_DETECTION_CPUWRAPPER_H
+#ifndef CPU_CV_H
+#define CPU_CV_H
 
 #include "CVWrapperInterface.h"
 
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //ELIKOS_DETECTION_CPUWRAPPER_H
+#endif // CPU_CV_H

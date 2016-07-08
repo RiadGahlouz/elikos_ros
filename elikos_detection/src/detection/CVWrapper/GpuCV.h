@@ -3,8 +3,8 @@
 //
 
 
-#ifndef ELIKOS_DETECTION_GPUCV_H
-#define ELIKOS_DETECTION_GPUCV_H
+#ifndef GPU_CV_H
+#define GPU_CV_H
 
 #include "CVWrapperInterface.h"
 #include "opencv2/gpu/gpu.hpp"
@@ -22,9 +22,10 @@ public:
     virtual void blur(cv::Size ksize, cv::Point anchor=cv::Point(-1, -1));
     virtual void erode(cv::Mat kernel, cv::Point anchor = cv::Point(-1, -1), int iterations = 1);
     virtual void dilate(cv::Mat kernel, cv::Point anchor = cv::Point(-1, -1), int iterations=1);
+
 private:
     cv::gpu::GpuMat mat_;
 };
 
 
-#endif //ELIKOS_DETECTION_GPUCV_H
+#endif // GPU_CV_H
