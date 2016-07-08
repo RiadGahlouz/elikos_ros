@@ -5,23 +5,21 @@
 #ifndef ELIKOS_DETECTION_CPUWRAPPER_H
 #define ELIKOS_DETECTION_CPUWRAPPER_H
 
-#include "AbstractCVWrapper.h"
+#include "CVWrapperInterface.h"
 
-
-class CpuCV : public AbstractCVWrapper
+class CpuCV : public CVWrapperInterface
 {
+public:
     CpuCV() = default;
-    ~CpuCV() = default;
+    virtual ~CpuCV();
 
-    virtual void uploadMat(const cv::Mat& src);
-    virtual cv::Mat& downloadMat();
+    virtual void upload(const cv::Mat& src);
+    virtual void download(cv::Mat& dst);
 
+    virtual void cvtColor(int code, int dstCn = 0);
     virtual void blur(cv::Size ksize, cv::Point anchor=cv::Point(-1, -1));
-
-    virtual void erode(cv::InputArray kernel, cv::Point anchor = cv::Point(-1, -1), int iterations = 1);
-
-    virtual void dilate(cv::InputArray kernel, cv::Point anchor = cv::Point(-1, -1), int iterations=1);
-
+    virtual void erode(cv::Mat kernel, cv::Point anchor = cv::Point(-1, -1), int iterations = 1);
+    virtual void dilate(cv::Mat kernel, cv::Point anchor = cv::Point(-1, -1), int iterations=1);
 private:
     cv::Mat mat_;
 };

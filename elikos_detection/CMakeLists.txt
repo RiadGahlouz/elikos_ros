@@ -21,6 +21,7 @@ catkin_package(
 
 include_directories(
 	${catkin_INCLUDE_DIRS}
+    src/detection/CVWrapper
 )
 
 add_executable( elikos_detection
@@ -41,8 +42,7 @@ add_executable( elikos_detection
     src/detection/BlobDetection/RobotDetection.h
     src/detection/BlobDetection/BlobTracking.h
     src/detection/BlobDetection/BlobTracking.cpp
-    src/detection/CVWrapper/AbstractCVWrapper.cpp
-    src/detection/CVWrapper/AbstractCVWrapper.h
+    src/detection/CVWrapper/CVWrapperInterface.h
     src/detection/CVWrapper/CpuCV.cpp
     src/detection/CVWrapper/CpuCV.h
     src/detection/CVWrapper/GpuCV.cpp
