@@ -24,7 +24,8 @@ string Color::intToString(int number) {
 
 Mat Color::generateThreshold(const Mat& image)
 {
-    cvWrapper->upload(image);
+    Mat imageCpy = image.clone();
+    cvWrapper->upload(imageCpy);
     cvWrapper->cvtColor(COLOR_BGR2HSV);
     BLUR_AMOUNT = PRE_BLUR + 1;
     cvWrapper->blur(Size(BLUR_AMOUNT, BLUR_AMOUNT), Point(-1, -1));
