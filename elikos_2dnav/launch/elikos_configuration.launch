@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="odom_node_pkg" type="odom_node_type" name="odom_node" output="screen">
+    <param name="odom_param" value="param_value" />
+  </node>
+
+  <node pkg="tf" type="static_transform_publisher" name="fcu_to_cam" args="0 0 0 0 0 0 /fcu /camera_depth_optical_frame 10"/>
+</launch>
