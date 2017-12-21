@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   elikos_remote_calib_client
+  nodelet
 )
 find_package(Qt5Gui)
 find_package(Qt5Core)
@@ -23,48 +24,26 @@ find_package(OpenCV 3 REQUIRED)
 
 
 catkin_package(
-    INCLUDE_DIRS src/elikos_transformation_utils src/elikos_context_utils
+    INCLUDE_DIRS src/elikos_transformation_utils src/elikos_context_utils src/blobdetection/include
     LIBRARIES elikos_transformation_utils elikos_context_utils
 	CATKIN_DEPENDS roscpp cv_bridge elikos_ros image_transport sensor_msgs geometry_msgs std_msgs tf
-#   DEPENDS system_lib
+    DEPENDS nodelet
 )
 
 include_directories(
 	${catkin_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
-    src/elikos_detection/TargetDetection/CVWrapper
     src/elikos_context_utils
     src/elikos_camera_info
     src/elikos_transformation_utils
+    src/blobdetection/include
 )
 
-add_executable(elikos_detection
-    src/elikos_detection/elikos_detection.cpp
-    src/elikos_detection/MessageHandler.h
-    src/elikos_detection/MessageHandler.cpp
-    src/elikos_detection/TargetDetection/RobotDesc.h
-    src/elikos_detection/TargetDetection/RobotDesc.cpp
-    src/elikos_detection/TargetDetection/Color.cpp
-    src/elikos_detection/TargetDetection/Color.h
-    src/elikos_detection/TargetDetection/GreenColor.cpp
-    src/elikos_detection/TargetDetection/GreenColor.h
-    src/elikos_detection/TargetDetection/RedColor.cpp
-    src/elikos_detection/TargetDetection/RedColor.h
-    src/elikos_detection/TargetDetection/WhiteColor.cpp
-    src/elikos_detection/TargetDetection/WhiteColor.h
-    src/elikos_detection/TargetDetection/BlobDetection.cpp
-    src/elikos_detection/TargetDetection/BlobDetection.h
-    src/elikos_detection/TargetDetection/TargetDetection.h
-    src/elikos_detection/TargetDetection/TargetDetection.cpp
-    src/elikos_detection/TargetDetection/ShapeDetection.h
-    src/elikos_detection/TargetDetection/ShapeDetection.cpp
-    src/elikos_detection/TargetDetection/CVWrapper/CVWrapperInterface.h
-    src/elikos_detection/TargetDetection/CVWrapper/CpuCV.cpp
-    src/elikos_detection/TargetDetection/CVWrapper/CpuCV.h
-    src/elikos_detection/TargetDetection/CVWrapper/GpuCV.cpp
-    src/elikos_detection/TargetDetection/CVWrapper/GpuCV.h)
+add_library(elikos_blobdetection
+    src/blobdetection/include/elikos_blobdetection_nodelet.hpp
+    src/blobdetection/elikos_blobdetection_nodelet.cpp)
 
-target_link_libraries(elikos_detection
+target_link_libraries(elikos_blobdetection
     ${catkin_LIBRARIES}
     ${OpenCV_LIBRARIES}
     yaml-cpp

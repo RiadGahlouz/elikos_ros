@@ -1,0 +1,7 @@
+<library path="lib/libelikos_blobdetection">
+    <class name="elikos_detection/blobdetection_nodelet" type="elikos_detection::BlobDetectionNodelet" base_class_type="nodelet::Nodelet">
+        <description>
+            A nodelet to do blob detection on images
+        </description>
+    </class>
+</library>
