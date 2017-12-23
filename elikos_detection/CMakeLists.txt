@@ -40,7 +40,13 @@ include_directories(
 )
 
 add_library(elikos_blobdetection
+    src/blobdetection/include/Color.hpp
+    src/blobdetection/include/Blob.hpp
+    src/blobdetection/include/BlobDetection.hpp
     src/blobdetection/include/elikos_blobdetection_nodelet.hpp
+    src/blobdetection/Blob.cpp
+    src/blobdetection/BlobDetection.cpp
+    src/blobdetection/Color.cpp
     src/blobdetection/elikos_blobdetection_nodelet.cpp)
 
 target_link_libraries(elikos_blobdetection

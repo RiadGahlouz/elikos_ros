@@ -1,11 +1,12 @@
 #ifndef ELIKOS_DETECTION_NODELET
 #define ELIKOS_DETECTION_NODELET
 
-#include <ros/ros.h>
-#include <nodelet/nodelet.h>
 #include <image_transport/image_transport.h>
+#include <nodelet/nodelet.h>
+#include <ros/ros.h>
 #include <sensor_msgs/Image.h>
 #include <memory>
+#include "BlobDetection.hpp"
 
 namespace elikos_detection {
 
@@ -22,9 +23,14 @@ class BlobDetectionNodelet : public nodelet::Nodelet {
     image_transport::Subscriber subscriber_;
 
     /**************************************************************************
+     * BLOB DETECTION ALGO
+     * ***********************************************************************/
+    BlobDetection blobDetection_;
+
+    /**************************************************************************
      * CallBack
      * ***********************************************************************/
-    void onImageReceived(const sensor_msgs::ImageConstPtr &image);
+    void onImageReceived(const sensor_msgs::ImageConstPtr& image);
 };
 
 }  // namespace elikos_detection
